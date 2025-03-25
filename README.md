@@ -18,7 +18,6 @@ personal-website
 
 ## Features
 
-- Prominently displays my name on the main page.
 - Short links/icons to my social media profiles:
   - LinkedIn
   - GitHub
