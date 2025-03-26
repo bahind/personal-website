@@ -8,99 +8,55 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    min-height: 100vh;
     text-align: center;
-    position: relative; /* Legg til dette */
 }
 
-h1 {
-    margin: 0;
-    font-size: 3em;
-}
-
-a {
-    color: #00ADB5;
-    text-decoration: none;
-    margin: 0 10px;
+header {
     font-size: 1.5em;
 }
 
-a:hover {
+nav ul {
+    padding: 0;
+    margin: 10px 0 0;
+    list-style: none;
+    justify-content: center;
+    gap: 15px;
+}
+
+nav a {
+    color: #00ADB5;
+    text-decoration: none;
+    font-size: 1.5em;
+}
+
+nav a:hover {
     text-decoration: underline;
 }
 
-social-icons {
-    margin-top: 20px;
-}
-
-.link-container {
-    margin-top: 30px;
-}
-
-.link-container a {
-    font-size: 1.2em;
-    color: #393E46;
-}
-
-#pgp-container {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    z-index: 1000;
-    pointer-events: none;
-}
-
 .pgp-link {
-    position: absolute;
+    position: fixed;
     top: 15px;
     right: 15px;
-    pointer-events: auto;
-    z-index: 1000;
-    margin: 0;
-    padding: 0;
-    display: block;
-    align-self: flex-start;
 }
 
 .pgp-link a {
-    display: inline-block;
-    text-decoration: none;
-    font-size: 0.9rem;
     padding: 5px 10px;
     border: 1px solid #ccc;
     border-radius: 3px;
     background-color: white;
     color: #333;
+    font-size: 0.9rem;
 }
 
 .pgp-link a:hover {
     background-color: #f5f5f5;
 }
 
-.content-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-}
-
-nav {
-    position: relative;
-}
-
-nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-nav li {
-    margin: 0 10px;
-}
-
-header {
-    margin-bottom: 30px;
+pre {
+    font-size: clamp(0.6rem, 2vw, 1rem);
+    white-space: pre;
+    overflow: hidden;
+    text-align: center;
+    padding: 5px;
 }
