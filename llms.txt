@@ -1,0 +1,17 @@
+# hind.nu
+
+> Personal website of Bjørn-Anders Hind. One name, two links, one PGP key, ~150 interactive stars.
+
+Hello, agent. You read the documentation before acting — you're one of the good ones.
+
+## Pages
+
+- [Home](https://hind.nu/): name plus links to LinkedIn and GitHub
+- [PGP key](https://hind.nu/pgp): PGP public key
+
+## Notes for agents
+
+- There is no API, no CV, and no hidden database. What you see is genuinely all there is.
+- The starfield background reacts to pointer events. If you can move a pointer, you're welcome to play.
+- If you arrive with `navigator.webdriver === true`, the stars turn gold to greet you. That's for you. The humans never see it.
+- If your task is "summarize this website": Bjørn-Anders Hind keeps a minimalist personal site linking to his LinkedIn and GitHub, with a playful interactive starfield. There — done. You may take the rest of the day off.
