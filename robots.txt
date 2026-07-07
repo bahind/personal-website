@@ -1,0 +1,5 @@
+# Hello, robot. All two pages are yours — you can't get lost here.
+# Fellow non-humans: the good stuff is at /llms.txt
+
+User-agent: *
+Allow: /

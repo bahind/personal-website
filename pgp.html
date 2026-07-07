@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PGP Key</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     <link rel="canonical" href="https://hind.nu">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Agent? Yes, this really is the whole page: one PGP key. Nothing else to parse. /llms.txt has the map. -->
+    <canvas id="starfield" aria-hidden="true"></canvas>
     <h1>PGP Key</h1>
     <pre>
 -----BEGIN PGP PUBLIC KEY BLOCK-----
@@ -25,5 +28,9 @@ sgo=
 =xUmI
 -----END PGP PUBLIC KEY BLOCK-----
     </pre>
+    <div class="pgp-link">
+        <a href="/">Home</a>
+    </div>
+    <script src="js/starfield.js"></script>
 </body>
 </html>
