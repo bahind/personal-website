@@ -1,3 +1,9 @@
+html {
+    height: 100%;
+    overflow: hidden;
+    overscroll-behavior: none;
+}
+
 body {
     background: radial-gradient(ellipse at 50% 30%, #2a3240 0%, #222831 55%, #191e26 100%) fixed;
     background-color: #222831;
@@ -10,6 +16,7 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
+    min-height: 100svh;
     text-align: center;
     opacity: 0;
     animation: fadeIn 1s ease-in forwards;
