@@ -20,6 +20,12 @@ body {
     text-align: center;
     opacity: 0;
     animation: fadeIn 1s ease-in forwards;
+    /* Only pinch-zoom is a native gesture, so one-finger drags reach the starfield uncancelled */
+    touch-action: pinch-zoom;
+    -webkit-touch-callout: none;
+    /* No long-press text selection on the sky; the PGP key below stays selectable */
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 @keyframes fadeIn {
@@ -87,6 +93,58 @@ h1::after {
     }
 }
 
+/* Arrival: js/starfield.js flies the sky in, condenses the name out of the stars, then adds
+   .arrived. The failsafe animation reveals the page anyway if the script never gets there. */
+html.arrive body {
+    animation: none;
+    opacity: 1;
+}
+
+html.arrive body > :not(#starfield) {
+    opacity: 0;
+    animation: arrive-failsafe 0.8s ease 5s forwards;
+}
+
+html.arrive.arrived body > :not(#starfield) {
+    opacity: 1;
+    animation: none;
+    transition: opacity 0.9s ease;
+}
+
+html.arrive.arrived header,
+html.arrive.arrived h1 {
+    transition-duration: 0.45s;
+}
+
+html.arrive.arrived nav,
+html.arrive.arrived pre {
+    transition-delay: 0.25s;
+}
+
+html.arrive.arrived .pgp-link {
+    transition-delay: 0.55s;
+}
+
+html.arrive.arrived .sky-hud,
+html.arrive.arrived .sound-toggle {
+    transition-delay: 0.85s;
+}
+
+@keyframes arrive-failsafe {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Departure: the page dissolves while the stars stretch into hyperspace
+   (!important so it also beats the more specific arrival rules on an arrived page) */
+html.leaving body > :not(#starfield) {
+    opacity: 0 !important;
+    transform: scale(1.08);
+    filter: blur(6px);
+    transition: opacity 0.4s ease-in, transform 0.6s ease-in, filter 0.4s ease-in !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
     body {
         animation: none;
@@ -102,6 +160,10 @@ h1::after {
     }
 
     h1.glitch {
+        animation: none;
+    }
+
+    .sky-hud-title::before {
         animation: none;
     }
 }
@@ -154,10 +216,88 @@ nav a:hover {
     box-shadow: 0 0 12px rgba(0, 173, 181, 0.35);
 }
 
+.sky-hud {
+    position: fixed;
+    left: 16px;
+    bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+    line-height: 1.4;
+    text-align: left;
+    text-transform: uppercase;
+    color: rgba(238, 238, 238, 0.55);
+    user-select: none;
+}
+
+.sky-hud-title::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin-right: 8px;
+    border-radius: 50%;
+    vertical-align: 1px;
+    background: #00ADB5;
+    box-shadow: 0 0 8px #00ADB5;
+    animation: live 2.4s ease-in-out infinite;
+}
+
+@keyframes live {
+    50% {
+        opacity: 0.3;
+    }
+}
+
+.sky-hud-data {
+    color: rgba(238, 238, 238, 0.35);
+    font-variant-numeric: tabular-nums;
+}
+
+.sound-toggle {
+    position: fixed;
+    right: 15px;
+    bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    border: 1px solid rgba(0, 173, 181, 0.35);
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(4px);
+    color: rgba(238, 238, 238, 0.7);
+    cursor: pointer;
+    transition: color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sound-toggle:hover,
+.sound-toggle:focus-visible {
+    color: #FFD369;
+    border-color: rgba(0, 173, 181, 0.7);
+    box-shadow: 0 0 12px rgba(0, 173, 181, 0.35);
+    outline: none;
+}
+
+.sound-toggle[aria-pressed="true"] {
+    color: #FFD369;
+    border-color: rgba(255, 211, 105, 0.55);
+}
+
+.sound-toggle[aria-pressed="true"] .mute,
+.sound-toggle[aria-pressed="false"] .waves {
+    display: none;
+}
+
 pre {
     font-size: clamp(0.6rem, 2vw, 1rem);
     white-space: pre;
     overflow: hidden;
     text-align: center;
     padding: 5px;
+    -webkit-user-select: text;
+    user-select: text;
 }

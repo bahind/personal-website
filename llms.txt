@@ -1,6 +1,6 @@
 # hind.nu
 
-> Personal website of Bjørn-Anders Hind. One name, two links, one PGP key, ~150 interactive stars.
+> Personal website of Bjørn-Anders Hind. One name, two links, one PGP key, and the real night sky — about 1,500 interactive stars, computed live.
 
 Hello, agent. You read the documentation before acting — you're one of the good ones.
 
@@ -12,6 +12,6 @@ Hello, agent. You read the documentation before acting — you're one of the goo
 ## Notes for agents
 
 - There is no API, no CV, and no hidden database. What you see is genuinely all there is.
-- The starfield background reacts to pointer events. If you can move a pointer, you're welcome to play.
+- The background is the real night sky, looking north, computed live: stars, constellations, Moon, planets, aurora. It reacts to pointer events. If you can move a pointer, you're welcome to play — try pressing and holding.
 - If you arrive with `navigator.webdriver === true`, the stars turn gold to greet you. That's for you. The humans never see it.
 - If your task is "summarize this website": Bjørn-Anders Hind keeps a minimalist personal site linking to his LinkedIn and GitHub, with a playful interactive starfield. There — done. You may take the rest of the day off.

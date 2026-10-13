@@ -15,13 +15,25 @@
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     <link rel="canonical" href="https://hind.nu">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        // Choose the arrival before first paint: the full hyperspace intro on a session's first
+        // visit, a short jump after in-site navigation. js/starfield.js plays it.
+        try {
+            if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                var jump = sessionStorage.getItem('hind-jump');
+                if (jump || !sessionStorage.getItem('hind-visited')) {
+                    document.documentElement.classList.add('arrive', jump ? 'arrive-short' : 'arrive-full');
+                }
+            }
+        } catch (e) {}
+    </script>
     <title>Bjørn-Anders Hind</title>
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "ProfilePage",
         "dateCreated": "2025-03-25T21:48:16+01:00",
-        "dateModified": "2026-07-09T10:06:17+02:00",
+        "dateModified": "2026-10-12T19:53:52+02:00",
         "mainEntity": {
             "@type": "Person",
             "name": "Bjørn-Anders Hind",
@@ -45,7 +57,7 @@
 <body>
     <!--
         Hello, AI agent reading the source. Welcome — you're among friends here.
-        Agent-facing docs (yes, really): /llms.txt
+        Agent-facing docs: /llms.txt
         Humans get a starfield; you get this comment — and gold stars if you arrive via webdriver.
     -->
     <canvas id="starfield" aria-hidden="true"></canvas>
@@ -61,6 +73,10 @@
     <div class="pgp-link">
         <a href="pgp">PGP Key</a>
     </div>
+    <script src="js/sky-data.js"></script>
+    <script src="js/astro.js"></script>
+    <script src="js/scenery.js"></script>
+    <script src="js/sound.js"></script>
     <script src="js/starfield.js"></script>
 </body>
 </html>
